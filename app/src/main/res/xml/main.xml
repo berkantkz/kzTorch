@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory android:title="@string/general" android:key="pref_general">
+        <Preference
+            android:key="pref_root_status"
+            android:title="Root status"
+            android:summary="@string/root_status_false"/>
+
+        <gs.preference.SeekBarPreference
+            android:key="pref_torch_level"
+            android:title="@string/set_level"
+            app:min="10"
+            android:max="255"
+            android:defaultValue="10"/>
+
+        <Preference
+            android:summary="@string/warning"
+            android:persistent="false"
+            android:selectable="false"/>
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="@string/about" android:key="pref_about">
+        <Preference
+            android:title="berkantkz"
+            android:summary="@string/developer"
+            android:selectable="false"
+            android:persistent="false"/>
+
+        <Preference
+            android:key="pref_support"
+            android:title="@string/support"
+            android:summary="@string/support_summary"/>
+
+        <CheckBoxPreference
+            android:id="@+id/pref_disable_ads"
+            android:key="pref_disable_ads"
+            android:title="@string/disable_ads"
+            android:summary="@string/disable_ads_summary" />
+
+        <Preference
+            android:summary="@string/pref_libs_used"
+            android:persistent="false"
+            android:selectable="false" />
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

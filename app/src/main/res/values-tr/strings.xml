@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="qs_tile_title">Fener</string>
+
+    <string name="general">Genel</string>
+    <string name="root_status_true">Kök erişimi alındı!</string>
+    <string name="root_status_false">Ya kök erişimini hakkınız yok, ya da erişime izin vermediniz. Feneri kullanabilmek için, kök erişimine gerek duyulur.</string>
+    <string name="set_level">Fenerin seviyesini belirleyin</string>
+    <string name="warning">Uyarı!\nFeneri uzun süreli kullanmak aygıtınızda zarara yol açabilir! Her zaman bunun bilincinde olun!</string>
+
+    <string name="about">Hakkında</string>
+    <string name="developer">Geliştirici</string>
+    <string name="support">Destek</string>
+    <string name="support_summary">Yardım mı gerekiyor? XDA Forum\'da yardım isteyin. Konuya gitmek için buraya dokunun!</string>
+    <string name="disable_ads">Tam ekran reklâmları gizle</string>
+    <string name="disable_ads_summary">Geliştiriciyi umursamıyorum. Yalnızca bana reklâmsız bir uygulama ver!</string>
+    <string name="ad_disabled_warning">Tam ekran reklâmlar artık devre dışı. Ama yine de, her dokunuşta görmeyecek olmanıza karşın, yalnızca bir kereliğine uygulama her başlatıldığında tam ekran reklâm gösterilecek.</string>
+    <string name="pref_libs_used">Açık Kaynak Kütüphaneleri: \n* Libsuperuser - Chainfire\n  - https://github.com/Chainfire/libsuperuser\n* android-seekbar-preference - gmazzo\n  - https://github.com/gmazzo/android-seekbar-preference</string>
+</resources>

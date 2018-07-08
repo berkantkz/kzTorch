@@ -1,0 +1,36 @@
+*.iml
+.gradle
+/local.properties
+/.idea/workspace.xml
+/.idea/libraries
+.DS_Store
+/build
+/captures
+.externalNativeBuild
+
+#Track these files
+!gradle
+!.gitignore
+!.travis.yml
+!build.gradle
+!gradle.properties
+!gradlew
+!gradlew.bat
+!LICENSE
+!MyApplication.iml
+!README.md
+!set_tags.sh
+!settings.gradle
+!app
+!app/src
+
+#Untrack these ones
+app/build
+local.properties
+build/
+KLU_Yemek.iml
+.idea/
+.gradle/
+app/app.iml
+keystore.properties
+berkantkz-apk-key.jks

@@ -1,0 +1,46 @@
+apply plugin: 'com.android.application'
+
+def keystorePropertiesFile = rootProject.file("keystore.properties");
+def keystoreProperties = new Properties()
+keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+
+android {
+    signingConfigs {
+        config {
+            storeFile file(keystoreProperties['storeFile'])
+            storePassword keystoreProperties['storePassword']
+            keyAlias keystoreProperties['keyAlias']
+            keyPassword keystoreProperties['keyPassword']
+        }
+    }
+    compileSdkVersion 27
+    defaultConfig {
+        applicationId "io.github.berkantkz.kztorch"
+        minSdkVersion 24
+        targetSdkVersion 27
+        versionCode 1
+        versionName "1.0"
+        signingConfig signingConfigs.config
+    }
+    buildTypes {
+        release {
+            minifyEnabled true
+            shrinkResources true
+        }
+        debug {
+            minifyEnabled true
+            shrinkResources true
+            signingConfig signingConfigs.config
+        }
+    }
+    buildToolsVersion '27.0.3'
+    productFlavors {
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    compile 'com.github.gmazzo:seekbar-preference:0.2'
+    compile 'eu.chainfire:libsuperuser:1.0.0.+'
+    compile 'com.google.android.gms:play-services-ads:11.8.0'
+}
