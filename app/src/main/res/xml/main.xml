@@ -6,7 +6,9 @@
         <Preference
             android:key="pref_root_status"
             android:title="Root status"
-            android:summary="@string/root_status_false"/>
+            android:summary="@string/root_status_false"
+            android:selectable="false"
+            android:persistent="false"/>
 
         <gs.preference.SeekBarPreference
             android:key="pref_torch_level"
