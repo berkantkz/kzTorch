@@ -61,7 +61,7 @@ public class kzService extends TileService {
                     .setPriority(NotificationCompat.PRIORITY_DEFAULT)
                     .setAutoCancel(true)
                     .setOngoing(true)
-                    .addAction(R.drawable.twotone_flash_off_white_24dp, getString(R.string.notification_action_turn_off), turnOffPendingIntent);
+                    .addAction(R.drawable.ic_tile, getString(R.string.notification_action_turn_off), turnOffPendingIntent);
             notificationManager = NotificationManagerCompat.from(this);
 
             if (torch_status == 0) {
