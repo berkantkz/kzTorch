@@ -16,4 +16,7 @@
     <string name="disable_ads_summary">Geliştiriciyi umursamıyorum. Yalnızca bana reklâmsız bir uygulama ver!</string>
     <string name="ad_disabled_warning">Tam ekran reklâmlar artık devre dışı. Ama yine de, her dokunuşta görmeyecek olmanıza karşın, yalnızca bir kereliğine uygulama her başlatıldığında tam ekran reklâm gösterilecek.</string>
     <string name="pref_libs_used">Açık Kaynak Kütüphaneleri: \n* Libsuperuser - Chainfire\n  - https://github.com/Chainfire/libsuperuser\n* android-seekbar-preference - gmazzo\n  - https://github.com/gmazzo/android-seekbar-preference</string>
+    <string name="notification_on_title">kzTorch is on</string>
+    <string name="notification_on_content">Warning! If you keep the torch on for long time, your device might get damaged.</string>
+    <string name="notification_action_turn_off">Turn off</string>
 </resources>
