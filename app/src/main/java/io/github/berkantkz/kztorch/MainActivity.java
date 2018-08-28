@@ -69,6 +69,17 @@ public class MainActivity extends PreferenceActivity {
                 return false;
             }
         });
+
+        findPreference("donate").setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+            @Override
+            public boolean onPreferenceClick(Preference preference) {
+                String url = "https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=berkantk3@gmail.com&item_name=kzTorch+thanks+donation&currency_code=USD";
+                Intent i = new Intent(Intent.ACTION_VIEW);
+                i.setData(Uri.parse(url));
+                startActivity(i);
+                return false;
+            }
+        });
     }
 
     static void startinterstitialAd(Context context) {

@@ -23,6 +23,21 @@
             android:selectable="false"/>
     </PreferenceCategory>
 
+    <PreferenceCategory android:title="@string/devSupport">
+
+        <Preference
+            android:key="donate"
+            android:title="@string/donate"
+            android:summary="@string/donate_summary"/>
+
+        <CheckBoxPreference
+            android:id="@+id/pref_disable_ads"
+            android:key="pref_disable_ads"
+            android:title="@string/disable_ads"
+            android:summary="@string/disable_ads_summary" />
+
+    </PreferenceCategory>
+
     <PreferenceCategory android:title="@string/about" android:key="pref_about">
         <Preference
             android:title="berkantkz"
@@ -34,12 +49,6 @@
             android:key="pref_support"
             android:title="@string/support"
             android:summary="@string/support_summary"/>
-
-        <CheckBoxPreference
-            android:id="@+id/pref_disable_ads"
-            android:key="pref_disable_ads"
-            android:title="@string/disable_ads"
-            android:summary="@string/disable_ads_summary" />
 
         <Preference
             android:summary="@string/pref_libs_used"

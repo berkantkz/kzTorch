@@ -20,4 +20,7 @@
     <string name="notification_on_title">kzTorch is on</string>
     <string name="notification_on_content">Warning! If you keep the torch on for long time, your device might get damaged.</string>
     <string name="notification_action_turn_off">Turn off</string>
+    <string name="devSupport">Support the developer</string>
+    <string name="donate">Donate</string>
+    <string name="donate_summary">Help developer to buy a cup of tea</string>
 </resources>
