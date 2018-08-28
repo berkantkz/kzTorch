@@ -1,7 +1,9 @@
 package io.github.berkantkz.kztorch;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
@@ -54,6 +56,17 @@ public class MainActivity extends PreferenceActivity {
                     Toast.makeText(MainActivity.this, R.string.ad_disabled_warning, Toast.LENGTH_LONG).show();
                 }
                 return true;
+            }
+        });
+
+        findPreference("pref_support").setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+            @Override
+            public boolean onPreferenceClick(Preference preference) {
+                String url = "https://forum.xda-developers.com/g4/themes-apps/app-kz-torch-brightness-adjustable-torch-t3791820";
+                Intent i = new Intent(Intent.ACTION_VIEW);
+                i.setData(Uri.parse(url));
+                startActivity(i);
+                return false;
             }
         });
     }
