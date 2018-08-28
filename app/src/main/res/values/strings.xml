@@ -22,5 +22,5 @@
     <string name="notification_action_turn_off">Turn off</string>
     <string name="devSupport">Support the developer</string>
     <string name="donate">Donate</string>
-    <string name="donate_summary">Help developer to buy a cup of tea</string>
+    <string name="donate_summary">Help me to buy a cup of tea</string>
 </resources>
