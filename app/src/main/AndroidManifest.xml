@@ -26,13 +26,16 @@
             android:name="io.github.berkantkz.kztorch.kzService"
             android:enabled="true"
             android:exported="true"
-            android:icon="@drawable/twotone_flash_off_white_24dp"
+            android:icon="@drawable/ic_tile"
             android:label="@string/qs_tile_title"
             android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
             <intent-filter>
                 <action android:name="android.service.quicksettings.action.QS_TILE" />
             </intent-filter>
         </service>
+
+        <receiver android:name=".kzService$ActionReceiver"/>
+
     </application>
 
 </manifest>
