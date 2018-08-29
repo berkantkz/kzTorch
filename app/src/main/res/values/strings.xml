@@ -23,4 +23,6 @@
     <string name="devSupport">Support the developer</string>
     <string name="donate">Donate</string>
     <string name="donate_summary">Help me to buy a cup of tea</string>
+    <string name="increase">Increase</string>
+    <string name="decrease">Decrease</string>
 </resources>

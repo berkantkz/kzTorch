@@ -22,4 +22,6 @@
     <string name="devSupport">Geliştiriciyi destekle</string>
     <string name="donate">Bağış yap</string>
     <string name="donate_summary">Bir bardak çay almama yardımcı ol!</string>
+    <string name="increase">Artır</string>
+    <string name="decrease">Azalt</string>
 </resources>
