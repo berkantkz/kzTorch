@@ -73,7 +73,7 @@ public class MainActivity extends PreferenceActivity {
         findPreference("donate").setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
             @Override
             public boolean onPreferenceClick(Preference preference) {
-                String url = "https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=berkantk3@gmail.com&item_name=kzTorch+thanks+donation&currency_code=USD";
+                String url = "http://pay.google.com/send";
                 Intent i = new Intent(Intent.ACTION_VIEW);
                 i.setData(Uri.parse(url));
                 startActivity(i);
