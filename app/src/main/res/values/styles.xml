@@ -1,4 +1,7 @@
 <resources>
 
-    <style name="AppTheme" parent="@android:style/Theme.DeviceDefault.Light" />
+    <style name="AppTheme" parent="@android:style/Theme.DeviceDefault.Light">
+        <item name="android:statusBarColor">@android:color/white</item>
+        <item name="android:windowLightStatusBar">true</item>
+    </style>
 </resources>
