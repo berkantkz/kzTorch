@@ -7,7 +7,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.drawable.Icon;
-import android.opengl.Visibility;
 import android.preference.PreferenceManager;
 import android.service.quicksettings.Tile;
 import android.service.quicksettings.TileService;
@@ -77,7 +76,8 @@ public class kzService extends TileService {
                     .setOngoing(true)
                     .addAction(R.drawable.ic_tile, getString(R.string.increase), increasePendingIntent)
                     .addAction(R.drawable.ic_tile, getString(R.string.decrease), decreasePendingIntent)
-                    .addAction(R.drawable.ic_tile, getString(R.string.notification_action_turn_off), turnOffPendingIntent);
+                    .addAction(R.drawable.ic_tile, getString(R.string.notification_action_turn_off), turnOffPendingIntent)
+                    .setVisibility(Notification.VISIBILITY_PUBLIC);
             notificationManager = NotificationManagerCompat.from(this);
 
             if (torch_status == 0) {
