@@ -21,6 +21,11 @@
             android:summary="@string/warning"
             android:persistent="false"
             android:selectable="false"/>
+
+        <CheckBoxPreference
+            android:key="prevent_when_locked"
+            android:title="@string/pref_prevent_when_locked_title"
+            android:summary="@string/pref_prevent_when_locked_summary"/>
     </PreferenceCategory>
 
     <PreferenceCategory android:title="@string/devSupport">

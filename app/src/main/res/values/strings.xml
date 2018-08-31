@@ -25,4 +25,6 @@
     <string name="donate_summary">Help me to buy a cup of tea</string>
     <string name="increase">Increase</string>
     <string name="decrease">Decrease</string>
+    <string name="pref_prevent_when_locked_title">Prevent it to turn on when locked</string>
+    <string name="pref_prevent_when_locked_summary">Requires user to unlock the device to proceed</string>
 </resources>

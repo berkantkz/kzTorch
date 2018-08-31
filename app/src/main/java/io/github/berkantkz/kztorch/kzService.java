@@ -1,11 +1,13 @@
 package io.github.berkantkz.kztorch;
 
+import android.app.Notification;
 import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.drawable.Icon;
+import android.opengl.Visibility;
 import android.preference.PreferenceManager;
 import android.service.quicksettings.Tile;
 import android.service.quicksettings.TileService;
@@ -79,7 +81,17 @@ public class kzService extends TileService {
             notificationManager = NotificationManagerCompat.from(this);
 
             if (torch_status == 0) {
-                turnOn();
+                if (sharedPreferences.getBoolean("prevent_when_locked",isSecure())) {
+                    Log.d(appTag,"Device is in locked state. User prevented it to be turned on.");
+                    unlockAndRun(new Runnable() {
+                        @Override
+                        public void run() {
+                            turnOn();
+                        }
+                    });
+                } else {
+                    turnOn();
+                }
             } else {
                 turnOff();
             }
