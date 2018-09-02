@@ -32,9 +32,12 @@ public class kzService extends TileService {
     static NotificationManagerCompat notificationManager;
     static NotificationCompat.Builder mBuilder;
     static Tile tile;
+    static Context c;
 
     @Override
     public void onClick() {
+        c = getApplicationContext();
+        tile = getQsTile();
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
 
         if (!sharedPreferences.getBoolean("pref_disable_ads",true)) {
@@ -109,7 +112,7 @@ public class kzService extends TileService {
         updateTile(R.drawable.ic_tile_on, Tile.STATE_ACTIVE);
     }
 
-    public void turnOff() {
+    public static void turnOff() {
         torch_current_status = false;
         Shell.SU.run("echo 0 > " + torch_path);
         Log.d(appTag, "kz Torch turned off");
@@ -152,10 +155,8 @@ public class kzService extends TileService {
         }
     }
 
-    private void updateTile(int icon, int state) {
-        tile = getQsTile();
-        tile.setLabel(getString(R.string.app_name));
-        tile.setIcon(Icon.createWithResource(getApplicationContext(), icon));
+    private static void updateTile(int icon, int state) {
+        tile.setIcon(Icon.createWithResource(c, icon));
         tile.setState(state);
         tile.updateTile();
     }
@@ -166,11 +167,7 @@ public class kzService extends TileService {
             String type = intent.getAction();
             switch (String.valueOf(type)) {
                 case "turnoff":
-                    notificationManager.cancel(1);
-                    torch_current_status = false;
-                    Shell.SU.run("echo 0 > " + torch_path);
-                    Log.d(appTag, "Turned off");
-                    notificationManager.cancel(1);
+                    turnOff();
                     break;
                 case "increase":
                     increase();
