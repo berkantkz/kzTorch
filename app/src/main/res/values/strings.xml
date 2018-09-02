@@ -18,7 +18,7 @@
     <string name="ad_disabled_warning">Full-screen ads are now disabled. However, though you won\'t anymore see it on each click, only one full-screen ad will be shown at the start of the app.</string>
     <string name="pref_libs_used">Open Source Libraries: \n* Libsuperuser - Chainfire\n  - https://github.com/Chainfire/libsuperuser\n* android-seekbar-preference - gmazzo\n  - https://github.com/gmazzo/android-seekbar-preference</string>
     <string name="notification_on_title">kzTorch is on</string>
-    <string name="notification_on_content">Warning! If you keep the torch on for long time, your device might get damaged.</string>
+    <string name="notification_on_content">Warning! If you keep the torch on for long time, your device might get damaged. Level: </string>
     <string name="notification_action_turn_off">Turn off</string>
     <string name="devSupport">Support the developer</string>
     <string name="donate">Donate</string>

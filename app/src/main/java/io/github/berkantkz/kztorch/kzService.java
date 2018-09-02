@@ -73,7 +73,7 @@ public class kzService extends TileService {
             mBuilder = new NotificationCompat.Builder(this, "kzTorch")
                     .setContentTitle(getString(R.string.notification_on_title))
                     .setContentText(getString(R.string.notification_on_content))
-                    .setStyle(new NotificationCompat.BigTextStyle().bigText(getString(R.string.notification_on_content)))
+                    .setStyle(new NotificationCompat.BigTextStyle().bigText(getString(R.string.notification_on_content) + pref_torch_level))
                     .setSmallIcon(R.drawable.ic_tile_on)
                     .setPriority(NotificationCompat.PRIORITY_DEFAULT)
                     .setAutoCancel(true)
@@ -130,8 +130,10 @@ public class kzService extends TileService {
             int increasedLevel;
             if (pref_torch_level >= 200) {
                 increasedLevel = 255;
+                mBuilder.setStyle(new NotificationCompat.BigTextStyle().bigText(c.getString(R.string.notification_on_content) + "255. Highest value reached!" ));
             } else {
                 increasedLevel = pref_torch_level + 55;
+                mBuilder.setStyle(new NotificationCompat.BigTextStyle().bigText(c.getString(R.string.notification_on_content) + increasedLevel));
             }
             pref_torch_level = increasedLevel;
             Shell.SU.run("echo " + pref_torch_level + "> " + torch_path);
@@ -139,6 +141,7 @@ public class kzService extends TileService {
         } else {
             Log.w(appTag,"Highest value reached.");
         }
+        notificationManager.notify(1,mBuilder.build());
     }
 
     public static void decrease() {
@@ -153,6 +156,8 @@ public class kzService extends TileService {
             pref_torch_level = decreasedLevel;
             Shell.SU.run("echo " + pref_torch_level + "> " + torch_path);
             Log.d(appTag, "Value decreased\nLevel = " + String.valueOf(decreasedLevel));
+            mBuilder.setStyle(new NotificationCompat.BigTextStyle().bigText(c.getString(R.string.notification_on_content) + pref_torch_level));
+            notificationManager.notify(1,mBuilder.build());
         }
     }
 

@@ -17,7 +17,7 @@
     <string name="ad_disabled_warning">Tam ekran reklâmlar artık devre dışı. Ama yine de, her dokunuşta görmeyecek olmanıza karşın, yalnızca bir kereliğine uygulama her başlatıldığında tam ekran reklâm gösterilecek.</string>
     <string name="pref_libs_used">Açık Kaynak Kütüphaneleri: \n* Libsuperuser - Chainfire\n  - https://github.com/Chainfire/libsuperuser\n* android-seekbar-preference - gmazzo\n  - https://github.com/gmazzo/android-seekbar-preference</string>
     <string name="notification_on_title">kzTorch etkin</string>
-    <string name="notification_on_content">Uyarı! Eğer feneri uzun süre açık tutarsanız, aygıtınızda hasar ortaya çıkabilir.</string>
+    <string name="notification_on_content">Uyarı! Eğer feneri uzun süre açık tutarsanız, aygıtınızda hasar ortaya çıkabilir. Seviye: </string>
     <string name="notification_action_turn_off">Kapat</string>
     <string name="devSupport">Geliştiriciyi destekle</string>
     <string name="donate">Bağış yap</string>
