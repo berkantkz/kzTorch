@@ -26,8 +26,8 @@ public class kzService extends TileService {
 
     //static String torch_path = "/sys/class/leds/flashlight-front/brightness";
     static String torch_path = "/sys/class/leds/led:torch_1/brightness", appTag = "kzTorch";
-    static int torch_level, torch_status;
-    static boolean torch_current_status;
+    static int pref_torch_level, torch_level;
+    static boolean currentTorchStatus;
     SharedPreferences sharedPreferences;
     static NotificationManagerCompat notificationManager;
     static NotificationCompat.Builder mBuilder;
@@ -46,14 +46,14 @@ public class kzService extends TileService {
 
         if (Shell.SU.available()) {
             if (sharedPreferences.contains("pref_torch_level")) {
-                torch_level = sharedPreferences.getInt("pref_torch_level", 0);
+                pref_torch_level = sharedPreferences.getInt("pref_torch_level", 0);
             } else {
-                torch_level = 255;
-                sharedPreferences.edit().putInt("pref_torch_level", torch_level).apply();
+                pref_torch_level = 255;
+                sharedPreferences.edit().putInt("pref_torch_level", pref_torch_level).apply();
             }
 
             // Check whether the torch is on or not for first run.
-            torch_status = Integer.parseInt(String.valueOf(Shell.SU.run(new String[]{"cat " + torch_path})).replace("[", "").replace("]", ""));
+            torch_level = Integer.parseInt(String.valueOf(Shell.SU.run(new String[]{"cat " + torch_path})).replace("[", "").replace("]", ""));
 
             // Intent for turning off the torch
             Intent turnOffIntent = new Intent(this, kzService.ActionReceiver.class);
@@ -84,7 +84,7 @@ public class kzService extends TileService {
                     .setVisibility(Notification.VISIBILITY_PUBLIC);
             notificationManager = NotificationManagerCompat.from(this);
 
-            if (torch_status == 0) {
+            if (torch_level == 0) {
                 if (sharedPreferences.getBoolean("prevent_when_locked",isSecure())) {
                     Log.d(appTag,"Device is in locked state. User prevented it to be turned on.");
                     unlockAndRun(new Runnable() {
@@ -110,15 +110,15 @@ public class kzService extends TileService {
     }
 
     public void turnOn() {
-        torch_current_status = true;
-        Shell.SU.run("echo " + torch_level + "> " + torch_path);
-        Log.d(appTag, "Turned on\nLevel=" + torch_level);
+        currentTorchStatus = true;
+        Shell.SU.run("echo " + pref_torch_level + "> " + torch_path);
+        Log.d(appTag, "Turned on\nLevel=" + pref_torch_level);
         notificationManager.notify(1, mBuilder.build());
         updateTile(R.drawable.ic_tile_on, Tile.STATE_ACTIVE);
     }
 
     public static void turnOff() {
-        torch_current_status = false;
+        currentTorchStatus = false;
         Shell.SU.run("echo 0 > " + torch_path);
         Log.d(appTag, "kz Torch turned off");
         notificationManager.cancel(1);
@@ -126,15 +126,15 @@ public class kzService extends TileService {
     }
 
     public static void increase() {
-        if (torch_level < 255) {
+        if (pref_torch_level < 255) {
             int increasedLevel;
-            if (torch_level >= 200) {
+            if (pref_torch_level >= 200) {
                 increasedLevel = 255;
             } else {
-                increasedLevel = torch_level + 55;
+                increasedLevel = pref_torch_level + 55;
             }
-            torch_level = increasedLevel;
-            Shell.SU.run("echo " + torch_level + "> " + torch_path);
+            pref_torch_level = increasedLevel;
+            Shell.SU.run("echo " + pref_torch_level + "> " + torch_path);
             Log.d(appTag, "Value increased\nLevel = " + String.valueOf(increasedLevel));
         } else {
             Log.w(appTag,"Highest value reached.");
@@ -142,16 +142,16 @@ public class kzService extends TileService {
     }
 
     public static void decrease() {
-        if (torch_level <= 255) {
+        if (pref_torch_level <= 255) {
             int decreasedLevel;
-            if (torch_level <= 55) {
+            if (pref_torch_level <= 55) {
                 turnOff();
                 return;
             } else {
-                decreasedLevel = torch_level - 55;
+                decreasedLevel = pref_torch_level - 55;
             }
-            torch_level = decreasedLevel;
-            Shell.SU.run("echo " + torch_level + "> " + torch_path);
+            pref_torch_level = decreasedLevel;
+            Shell.SU.run("echo " + pref_torch_level + "> " + torch_path);
             Log.d(appTag, "Value decreased\nLevel = " + String.valueOf(decreasedLevel));
         }
     }
