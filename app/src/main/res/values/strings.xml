@@ -22,7 +22,7 @@
     <string name="notification_action_turn_off">Turn off</string>
     <string name="devSupport">Support the developer</string>
     <string name="donate">Donate</string>
-    <string name="donate_summary">Help me to buy a cup of tea\berkantk3@gmail.com</string>
+    <string name="donate_summary">Help me to buy a cup of tea\nberkantk3@gmail.com</string>
     <string name="increase">Increase</string>
     <string name="decrease">Decrease</string>
     <string name="pref_prevent_when_locked_title">Prevent it to turn on when locked</string>
