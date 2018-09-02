@@ -104,6 +104,11 @@ public class kzService extends TileService {
         }
     }
 
+    @Override
+    public void onStartListening() {
+        Log.d(appTag, "****** Listening started ******");
+    }
+
     public void turnOn() {
         torch_current_status = true;
         Shell.SU.run("echo " + torch_level + "> " + torch_path);
@@ -140,12 +145,8 @@ public class kzService extends TileService {
         if (torch_level <= 255) {
             int decreasedLevel;
             if (torch_level <= 55) {
-                decreasedLevel = 0;
-                notificationManager.cancel(1);
-                torch_current_status = false;
-                Shell.SU.run("echo 0 > " + torch_path);
-                Log.d(appTag, "Turned off");
-                notificationManager.cancel(1);
+                turnOff();
+                return;
             } else {
                 decreasedLevel = torch_level - 55;
             }
