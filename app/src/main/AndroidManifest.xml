@@ -26,7 +26,7 @@
             android:name="io.github.berkantkz.kztorch.kzService"
             android:enabled="true"
             android:exported="true"
-            android:icon="@drawable/ic_tile"
+            android:icon="@drawable/ic_tile_off"
             android:label="@string/qs_tile_title"
             android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
             <intent-filter>

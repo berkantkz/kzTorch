@@ -31,6 +31,7 @@ public class kzService extends TileService {
     SharedPreferences sharedPreferences;
     static NotificationManagerCompat notificationManager;
     static NotificationCompat.Builder mBuilder;
+    static Tile tile;
 
     @Override
     public void onClick() {
@@ -70,13 +71,13 @@ public class kzService extends TileService {
                     .setContentTitle(getString(R.string.notification_on_title))
                     .setContentText(getString(R.string.notification_on_content))
                     .setStyle(new NotificationCompat.BigTextStyle().bigText(getString(R.string.notification_on_content)))
-                    .setSmallIcon(R.drawable.ic_tile)
+                    .setSmallIcon(R.drawable.ic_tile_on)
                     .setPriority(NotificationCompat.PRIORITY_DEFAULT)
                     .setAutoCancel(true)
                     .setOngoing(true)
-                    .addAction(R.drawable.ic_tile, getString(R.string.increase), increasePendingIntent)
-                    .addAction(R.drawable.ic_tile, getString(R.string.decrease), decreasePendingIntent)
-                    .addAction(R.drawable.ic_tile, getString(R.string.notification_action_turn_off), turnOffPendingIntent)
+                    .addAction(R.drawable.ic_tile_on, getString(R.string.increase), increasePendingIntent)
+                    .addAction(R.drawable.ic_tile_on, getString(R.string.decrease), decreasePendingIntent)
+                    .addAction(R.drawable.ic_tile_off, getString(R.string.notification_action_turn_off), turnOffPendingIntent)
                     .setVisibility(Notification.VISIBILITY_PUBLIC);
             notificationManager = NotificationManagerCompat.from(this);
 
@@ -105,6 +106,7 @@ public class kzService extends TileService {
         Shell.SU.run("echo " + torch_level + "> " + torch_path);
         Log.d(appTag, "Turned on\nLevel=" + torch_level);
         notificationManager.notify(1, mBuilder.build());
+        updateTile(R.drawable.ic_tile_on, Tile.STATE_ACTIVE);
     }
 
     public void turnOff() {
@@ -112,6 +114,7 @@ public class kzService extends TileService {
         Shell.SU.run("echo 0 > " + torch_path);
         Log.d(appTag, "kz Torch turned off");
         notificationManager.cancel(1);
+        updateTile(R.drawable.ic_tile_off, Tile.STATE_INACTIVE);
     }
 
     public static void increase() {
@@ -149,10 +152,11 @@ public class kzService extends TileService {
         }
     }
 
-    private void updateTile(int icon, String label) {
-        final Tile tile = getQsTile();
+    private void updateTile(int icon, int state) {
+        tile = getQsTile();
+        tile.setLabel(getString(R.string.app_name));
         tile.setIcon(Icon.createWithResource(getApplicationContext(), icon));
-        tile.setLabel(label);
+        tile.setState(state);
         tile.updateTile();
     }
 
